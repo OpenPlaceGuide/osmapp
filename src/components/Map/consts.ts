@@ -8,7 +8,7 @@ export const GLYPHS = `https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?ke
 export const OSMAPP_SOURCES = {
   maptiler_planet: {
     type: 'vector' as const,
-    url: `https://api.maptiler.com/tiles/v3/tiles.json?key=${apiKey}`,
+    url: `http://tiles-server.openplaceguide.org/data/v3.json`,
   },
   contours: {
     type: 'vector' as const,
