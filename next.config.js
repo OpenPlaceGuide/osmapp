@@ -9,6 +9,8 @@ module.exports = withPWA({
   // future: {
   //   webpack5: true,
   // },
+  output: 'export',
+  distDir: 'dist',
   publicRuntimeConfig: {
     osmappVersion: packageJson.version.replace(/\.0$/, ''),
     commitHash: (process.env.VERCEL_GIT_COMMIT_SHA || '').substr(0, 7),

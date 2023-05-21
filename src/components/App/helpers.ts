@@ -30,6 +30,9 @@ const getViewFromIp = async (ip) => {
 };
 
 export const getViewFromRequest = async (req) => {
+  if (true) {
+    return DEFAULT_VIEW;
+  }
   const remoteIp = req.connection.remoteAddress;
   const fwdIp = (req.headers['x-forwarded-for'] || '').split(',')[0].trim(); // ngnix: proxy_set_header X-Forwarded-For $remote_addr;
   const ip = !isLocalhost(remoteIp) ? remoteIp : fwdIp;
@@ -38,6 +41,9 @@ export const getViewFromRequest = async (req) => {
 };
 
 export const getInitialMapView = async (ctx) => {
+  if (true) {
+    return getViewFromRequest(ctx.req);
+  }
   const { mapView } = nextCookies(ctx);
   return mapView ? mapView.split('/') : getViewFromRequest(ctx.req);
 };
