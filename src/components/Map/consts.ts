@@ -1,15 +1,14 @@
 // https://cloud.maptiler.com/account
-
 const apiKey = '7dlhLl3hiXQ1gsth0kGu';
 
 export const OSMAPP_SPRITE = `${window.location.protocol}//${window.location.host}/sprites/osmapp`;
 
-export const GLYPHS = `https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=${apiKey}`;
+export const GLYPHS = `https://africa.tiles.openplaceguide.org/fonts/{fontstack}/{range}.pbf`;
 
 export const OSMAPP_SOURCES = {
   maptiler_planet: {
     type: 'vector' as const,
-    url: `https://api.maptiler.com/tiles/v3/tiles.json?key=${apiKey}`,
+    url: `https://africa.tiles.openplaceguide.org/data/v3.json`,
   },
   contours: {
     type: 'vector' as const,
