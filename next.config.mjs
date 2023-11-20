@@ -5,10 +5,13 @@ import { LANGUAGES } from './src/config.mjs';
 const osmappVersion = process.env.npm_package_version;
 const commitHash = (process.env.VERCEL_GIT_COMMIT_SHA || '').substring(0, 7);
 const commitMessage = process.env.VERCEL_GIT_COMMIT_MESSAGE || 'dev';
-const sentryRelease = `${osmappVersion}-${commitHash}-${commitMessage.substring(0, 10)}`;
+const sentryRelease = `${osmappVersion}-${commitHash}-${commitMessage.substring(
+  0,
+  10,
+)}`;
 
 const rewrites = async () => {
-  return {
+  let result = {
     beforeFiles: [],
     afterFiles: [
       {
@@ -44,6 +47,17 @@ const rewrites = async () => {
       },
     ],
   };
+
+  if (typeof process.env.PROXY_BACKEND !== 'undefined') {
+    result['fallback'] = [
+      {
+        source: '/:path(.*)',
+        destination: process.env.PROXY_BACKEND + ':path',
+      },
+    ];
+  }
+
+  return result;
 };
 
 /** @type {import('next').NextConfig} */
