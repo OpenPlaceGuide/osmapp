@@ -51,4 +51,15 @@ module.exports = withPWA({
 
     return config;
   },
+  rewrites: () => {
+    if (typeof process.env.PROXY_BACKEND === 'undefined') {
+      return [];
+    }
+    return [
+      {
+        source: '/((?!node|way|relation|install)):path',
+        destination: process.env.PROXY_BACKEND + ':path',
+      },
+    ];
+  },
 });
