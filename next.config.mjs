@@ -21,6 +21,17 @@ const nextConfig = {
     defaultLocale: 'default',
     localeDetection: false,
   },
+  rewrites: () => {
+    if (typeof process.env.PROXY_BACKEND === 'undefined') {
+      return [];
+    }
+    return [
+      {
+        source: '/((?!node|way|relation|install|directions|-|[0-9])):path(.*)',
+        destination: process.env.PROXY_BACKEND + ':path',
+      },
+    ];
+  },
 };
 
 export default withSentryConfig(nextConfig, {
