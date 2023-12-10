@@ -17,6 +17,7 @@ import { ObjectsAround } from './ObjectsAround';
 import { OsmError } from './OsmError';
 import { Members } from './Members';
 import { EditButton } from './EditButton';
+import { FeatureOpenPlaceGuideLink } from './FeatureOpenPlaceGuideLink';
 import { getLabel } from '../../helpers/featureLabel';
 import { ImageSection } from './ImageSection/ImageSection';
 import { PublicTransport } from './PublicTransport/PublicTransport';
@@ -50,6 +51,11 @@ export const FeaturePanel = () => {
           {!skeleton && (
             <>
               <OsmError />
+
+              <FeatureOpenPlaceGuideLink
+                center={feature.center}
+                osmId={getUrlOsmId(osmMeta)}
+              />
 
               <Properties
                 showTags={showTagsTable}
