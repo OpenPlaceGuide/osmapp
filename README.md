@@ -1,4 +1,17 @@
-# OsmAPP
+# OsmAPP - OpenPlaceGuide Fork
+
+Additional features for OpenPlaceGuide
+
+- Allow Proxying requests which are not handled by OsmAPP
+- Include link to OpenPlaceGuide pages (via discover service)
+
+## Building
+
+```bash
+docker build --build-arg PROXY_BACKEND=http://opg-pages/ . -t osmapp
+```
+
+# OsmAPP – beta (Original Readme)
 
 Let's create a universal app for OpenStreetMap ecosystem.
 It should be as easy to use as Google Maps, including clickable POIs and editing capabilites.
