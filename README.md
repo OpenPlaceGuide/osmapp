@@ -1,4 +1,17 @@
-# OsmAPP – beta
+# OsmAPP - OpenPlaceGuide Fork
+
+Additional features for OpenPlaceGuide
+
+- Allow Proxying requests which are not handled by OsmAPP
+- Include link to OpenPlaceGuide pages (via discover service)
+
+## Building
+
+```bash
+docker build --build-arg PROXY_BACKEND=http://opg-pages/ . -t osmapp
+```
+
+# OsmAPP – beta (Original Readme)
 
 Lets create a universal OpenStreetMap app for broad public. It should be as easy to use as Google Maps, including clickable POIs and editing capabilites. See also [SotM 2021 talk](https://github.com/zbycz/osmapp-talk).
 
