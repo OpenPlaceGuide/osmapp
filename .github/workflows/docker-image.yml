@@ -1,0 +1,18 @@
+name: Docker Image CI - for opg-pages
+
+on:
+  push:
+    branches: [ "opg-master" ]
+  pull_request:
+    branches: [ "opg-master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build --build-arg PROXY_BACKEND=http://opg-pages/ . --file Dockerfile --tag osmapp:$(date +%s)
