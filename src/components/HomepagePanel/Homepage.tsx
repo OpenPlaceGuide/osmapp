@@ -58,10 +58,7 @@ const Spacer = styled.div`
 `;
 const Examples = () => (
   <>
-    <Link href="/way/34633854">Empire State Building</Link> •{' '}
-    <Link href="/way/119016167">
-      {t('homepage.examples.charles_bridge_statues')}
-    </Link>
+    <Link href="/way/151431279">Meskel Square</Link>
   </>
 );
 const ExamplesClimbing = () => (
@@ -219,23 +216,6 @@ export function Homepage({
 
             <Spacer />
 
-            <a
-              href="https://www.maptiler.com"
-              rel="noopener"
-              target="_blank"
-              className="maptiler"
-            >
-              <img
-                src="/maptiler.svg"
-                alt="MapTiler logo"
-                width={200}
-                height={52}
-              />
-              <br />
-              <Translation id="homepage.maptiler" />
-            </a>
-
-            <Spacer />
             <Spacer />
 
             <Typography variant="overline" color="textSecondary" component="h2">
