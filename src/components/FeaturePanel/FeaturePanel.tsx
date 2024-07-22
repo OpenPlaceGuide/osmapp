@@ -104,6 +104,8 @@ export const FeaturePanel = ({ headingRef }: FeaturePanelProps) => {
               </Box>
 
               <PanelSidePadding>
+                <FeatureOpenPlaceGuideLink />
+
                 {!isClimbingCrag && <PropertiesComponent />}
                 <RouteDistributionInPanel />
                 {!isPublictransportRoute(feature) && <MemberFeatures />}
@@ -112,7 +114,6 @@ export const FeaturePanel = ({ headingRef }: FeaturePanelProps) => {
                 <PublicTransport />
                 <Runways />
                 <Sockets />
-                <FeatureOpenPlaceGuideLink />
                 <EditButton />
                 <EditDialog />
               </PanelSidePadding>
