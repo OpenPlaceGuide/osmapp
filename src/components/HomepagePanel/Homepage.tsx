@@ -43,13 +43,7 @@ const Spacer = styled.div`
 const Examples = () => (
   <>
     {t('homepage.examples.eg')}{' '}
-    <Link href="/way/34633854" locale={intl.lang}>
-      Empire State Building
-    </Link>{' '}
-    •{' '}
-    <Link href="/way/119016167" locale={intl.lang}>
-      {t('homepage.examples.charles_bridge_statues')}
-    </Link>
+    <Link href="/way/151431279" locale={intl.lang}>Meskel Square</Link>
   </>
 );
 
@@ -157,6 +151,12 @@ export const Homepage = ({ mobileMode, onClick }: Props) => {
               {t('homepage.special_thanks_heading')}
             </Typography>
             <ul style={{ paddingLeft: '1.6em' }}>
+              <li>
+                <a href="https://www.osmapp.org/" target="_blank">
+                  OsmAPP
+                </a>
+                {' – for the dynamic map application'}
+              </li>
               <li>
                 <a href="https://www.openstreetmap.org/" target="_blank">
                   OpenStreetMap
