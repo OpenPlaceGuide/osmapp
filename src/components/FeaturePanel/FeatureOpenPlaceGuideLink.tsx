@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Button } from '@mui/material';
 import { t } from '../../services/intl';
 import { fetchJson } from '../../services/fetch';
 import { useFeatureContext } from '../utils/FeatureContext';
@@ -16,6 +17,7 @@ const getData = async (center, osmId) => {
   const body = await fetchJson(
     `https://discover.openplaceguide.org/v2/discover?lat=${center[1]}&lon=${center[0]}&osmId=${osmId}`,
   );
+
   return body;
 };
 
@@ -39,18 +41,32 @@ export const FeatureOpenPlaceGuideLink = () => {
     return null;
   }
 
+  const selfInstance = {
+    url: `${window.location.origin}/detail/${osmId}`,
+    name: 'map.et',
+  };
+
   return (
     <>
-      {instances.map((instance) => (
-        <>
-          <a href={instance.url}>
-            {t('featurepanel.more_in_openplaceguide', {
-              instanceName: instance.name,
-            })}
-          </a>
-          <Spacer />
-        </>
-      ))}
+      <Button variant="contained" href={selfInstance.url}>
+        {t('featurepanel.detail_page')}
+      </Button>
+
+      <Spacer />
+      {instances.map((instance) =>
+        instance.name === selfInstance.name ? (
+          ''
+        ) : (
+          <>
+            <a href={instance.url}>
+              {t('featurepanel.more_in_openplaceguide', {
+                instanceName: instance.name,
+              })}
+            </a>
+            <Spacer />
+          </>
+        ),
+      )}
     </>
   );
 };

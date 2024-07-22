@@ -116,6 +116,10 @@ export const FeaturePanelInner = () => {
         <Flex>
           {!skeleton && (
             <>
+              <PanelSidePadding>
+                <FeatureOpenPlaceGuideLink />
+              </PanelSidePadding>
+
               <ImageSlider />
 
               <PanelSidePadding>
@@ -125,8 +129,6 @@ export const FeaturePanelInner = () => {
                 {advanced && <Members />}
 
                 <PublicTransport tags={tags} />
-
-                <FeatureOpenPlaceGuideLink />
 
                 {editEnabled && <EditButton />}
                 <EditDialog />
