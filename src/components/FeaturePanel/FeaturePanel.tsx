@@ -72,6 +72,8 @@ export const FeaturePanel = () => {
               </Box>
 
               <PanelSidePadding>
+                <FeatureOpenPlaceGuideLink />
+
                 {!isClimbingCrag && <PropertiesComponent />}
                 <RouteDistributionInPanel />
                 <MemberFeatures />
@@ -80,8 +82,6 @@ export const FeaturePanel = () => {
 
                 <PublicTransport tags={tags} />
                 <Runways />
-
-                <FeatureOpenPlaceGuideLink />
 
                 <EditButton />
                 <EditDialog />
