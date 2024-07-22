@@ -39,9 +39,9 @@ export default {
 
   'climbing_renderer.climbing_grade': 'climbing grade ',
 
-  'project.osmapp.description': 'A universal app for OpenStreetMap',
+  'project.osmapp.description': 'Interactive City Guide of Addis Ababa in Ethiopia',
   'project.osmapp.serpDescription':
-    'An open-source map of the world based on the OpenStreetMap database. Features a search, clickable points of interest, in-app map edits, and more!',
+    'An open-source map of Addis Ababa in Ethiopia based on the OpenStreetMap database. Features a search, clickable points of interest, in-app map edits, and more! Based on OsmAPP and OpenPlaceGuide.',
 
   'project.openclimbing.description': 'Free wiki climbing map',
   'project.openclimbing.serpDescription': 'A wiki based open-source climbing map with topos. Built on OpenStreetMap and Wikipedia projects.',
@@ -66,13 +66,20 @@ export default {
   'homepage.about_osm': `All map data is from
       <a href="https://osm.org">OpenStreetMap</a>, a map created by
       millions of contributors — similar to Wikipedia. You can find
-      <em>Edit</em> button on each map feature.`,
-  'homepage.heading_about_osmapp': 'About OsmAPP',
-  'homepage.about_osmapp': `This application should offer a convenient interface for everyday use of <i>OpenStreetMap</i>
-     including editing options. <br/>Currently it includes various map layers, POI editing and a basic search engine.
-     Features such as navigation or favorite places are planned.`,
-  'homepage.github_link': `You may suggest new features on <a href="https://github.com/zbycz/osmapp" target='_blank'>GitHub</a>.`,
+      <em>Edit</em> button on each map feature. The data is enriched by
+      business and place information from <a href="https://openplaceguide.org">OpenPlaceGuide</a>`,
+  'homepage.heading_about_osmapp': 'About map.et',
+  'homepage.about_osmapp': `This is a city guide of Addis Ababa in Ethiopia by <a href="https://map.et/bandira" target="_blank">BAME PLC</a>. This product is in <strong>beta</strong> phase.`,
+  'homepage.github_link': `You can add information about your own places in the <a href="https://github.com/OpenPlaceGuide/data" target="_blank">data repository</a> or use the link on the specific detail page. You may suggest new features, report bugs and ask questions on <a href="https://github.com/AddisMap/map.et/issues" target='_blank'>GitHub</a>.`,
   'homepage.special_thanks_heading': `Special thanks to`,
+  'homepage.special_thanks': `<ul>
+        <li><a href="https://www.osmapp.org/" rel='noopener' target='_blank'>OsmAPP</a> – for the dynamic map application
+        <li><a href="https://www.openstreetmap.org/" rel='noopener' target='_blank'>OpenStreetMap</a> – for the best world map 🌎
+        <li><a href="https://www.mapillary.com/" rel='noopener' target='_blank'>Mapillary</a>,
+              <a href="https://openstreetmap.cz/fody" rel='noopener' target='_blank'>Fody</a>,
+              <a href="https://www.wikipedia.org/" rel='noopener' target='_blank'>Wikipedia</a> – for images 🖼
+      </ul>
+  `,
   'homepage.for_images': 'for images 🖼',
   'homepage.for_osm': 'for the best world map 🌎',
   'homepage.maptiler': 'for awesome vector maps and for supporting this project  ❤️ ',
@@ -81,7 +88,7 @@ export default {
   'homepage.disclaimer': `OpenStreetMap and OSM are a trademark of the OpenStreetMap Foundation. This project is not endorsed by or affiliated with the <a href="https://osmfoundation.org/" target='_blank'>OpenStreetMap Foundation</a>.`,
   'homepage.disclaimer_maptiler': `Vector maps ("Basic" and "Outdoor") contain some place names from the Wikidata project, more <a href="https://github.com/openstreetmap/openstreetmap-website/pull/4042#issuecomment-1562761674" target='_blank'>here</a>.`,
 
-  'searchbox.placeholder': 'Search OpenStreetMap',
+  'searchbox.placeholder': 'Search map.et',
   'searchbox.category': 'category',
   'searchbox.overpass_success': 'Results found: __count__',
   'searchbox.overpass_error': 'Error fetching results. __message__',
