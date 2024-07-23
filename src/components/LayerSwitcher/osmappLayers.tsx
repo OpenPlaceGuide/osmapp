@@ -46,12 +46,6 @@ const czBbox = [
 
 export const osmappLayers: Layers = {
   basic: {
-    name: t('layers.basic'),
-    type: 'basemap',
-    Icon: ExploreIcon,
-    attribution: ['maptiler', 'osm'],
-  },
-  makinaAfrica: {
     name: t('layers.makina_africa'),
     type: 'basemap',
     Icon: ExploreIcon,
