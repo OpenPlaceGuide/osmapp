@@ -41,7 +41,8 @@ export const getViewFromRequest = async (req) => {
 
 export const getInitialMapView = async (ctx) => {
   const { mapView } = nextCookies(ctx);
-  return mapView ? mapView.split('/') : getViewFromRequest(ctx.req);
+  const addisAbabaView = [12, 9, 38.75];
+  return mapView ? mapView.split('/') : addisAbabaView;
 };
 
 const timeout = (time) =>
