@@ -45,14 +45,10 @@ export const getViewFromRequest = async (
   return view ?? DEFAULT_VIEW;
 };
 
-export const getInitialMapView = async (
-  ctx: NextPageContext,
-): Promise<View> => {
-  const cookies = nextCookies(ctx);
-  const viewCookie = cookies.mapView;
-  return viewCookie
-    ? (viewCookie.split('/') as View)
-    : getViewFromRequest(ctx.req);
+export const getInitialMapView = async (ctx) => {
+  const { mapView } = nextCookies(ctx);
+  const addisAbabaView = [12, 9, 38.75];
+  return mapView ? mapView.split('/') : addisAbabaView;
 };
 
 const saveLastUrl = (feature: Feature, ctx?: NextPageContext) => {
