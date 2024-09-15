@@ -69,6 +69,13 @@ export const AutocompleteInput = ({
   const { showToast } = useSnackbar();
   const mapCenter = useMapCenter();
   const { currentTheme } = useUserThemeContext();
+  const onChange = onSelectedFactory(
+    setFeature,
+    setPreview,
+    bbox,
+    showToast,
+    setOverpassLoading,
+  );
   return (
     <Autocomplete
       inputValue={inputValue}
@@ -86,13 +93,7 @@ export const AutocompleteInput = ({
         ''
       }
       getOptionKey={(option) => JSON.stringify(option)}
-      onChange={onSelectedFactory(
-        setFeature,
-        setPreview,
-        bbox,
-        showToast,
-        setOverpassLoading,
-      )}
+      onChange={onChange}
       onHighlightChange={onHighlightFactory(setPreview)}
       getOptionDisabled={(o) => o.loader}
       autoComplete

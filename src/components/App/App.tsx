@@ -77,6 +77,12 @@ const useUpdateViewFromHash = () => {
   }, [setView]);
 };
 
+const useSearchQuery = () => {
+  const queryString = global.window?.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get('q');
+};
+
 const IndexWithProviders = () => {
   const isMobileMode = useMobileMode();
   const { feature, featureShown } = useFeatureContext();
@@ -84,6 +90,7 @@ const IndexWithProviders = () => {
   useUpdateViewFromFeature();
   usePersistMapView();
   useUpdateViewFromHash();
+  const searchQuery = useSearchQuery();
 
   // TODO add correct error boundaries
 
@@ -96,7 +103,7 @@ const IndexWithProviders = () => {
   return (
     <>
       <Loading />
-      <SearchBox />
+      <SearchBox searchQuery={searchQuery} />
       {featureShown && !isMobileMode && <FeaturePanelOnSide />}
       {featureShown && isMobileMode && <FeaturePanelInDrawer />}
       {isClimbingDialogShown && (

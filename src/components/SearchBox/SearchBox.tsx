@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import SearchIcon from '@mui/icons-material/Search';
 import { CircularProgress, IconButton, Paper } from '@mui/material';
@@ -72,7 +72,7 @@ const useOnClosePanel = () => {
   };
 };
 
-const SearchBox = () => {
+const SearchBox = ({ searchQuery }) => {
   const isMobileMode = useMobileMode();
   const { featureShown } = useFeatureContext();
   const { inputValue, setInputValue } = useInputValueState();
@@ -80,8 +80,12 @@ const SearchBox = () => {
   const [overpassLoading, setOverpassLoading] = useState(false);
   const autocompleteRef = useRef();
   const onClosePanel = useOnClosePanel();
-
   useOptions(inputValue, setOptions);
+  useEffect(() => {
+    if (searchQuery) {
+      setInputValue(searchQuery);
+    }
+  });
 
   return (
     <TopPanel $isMobileMode={isMobileMode}>
