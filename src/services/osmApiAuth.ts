@@ -18,7 +18,7 @@ import { getLabel } from '../helpers/featureLabel';
 
 const prod = true;
 
-const PROD_CLIENT_ID = 'vWUdEL3QMBCB2O9q8Vsrl3i2--tcM34rKrxSHR9Vg68';
+const PROD_CLIENT_ID = '4mKsksOmU2sYG89eGwC3kDZlx8TpdfDcrCdNG9jC2bs'; // map.et
 
 // testable on http://127.0.0.1:3000
 const TEST_CLIENT_ID = 'a_f_aB7ADY_kdwe4YHpmCSBtNtDZ-BitW8m5I6ijDwI';
