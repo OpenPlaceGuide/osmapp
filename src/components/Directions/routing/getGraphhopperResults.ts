@@ -4,7 +4,7 @@ import { fetchJson } from '../../../services/fetch';
 import { getBbox } from '../../../services/getCenter';
 import { FetchError } from '../../../services/helpers';
 
-const API_KEY = `f189b841-6529-46c6-8a91-51f17477dcda`;
+const API_KEY = `d45c047b-c49e-447e-b99e-53481fbc4eee`;
 
 export const profiles: Record<Profile, string> = {
   car: 'car',
