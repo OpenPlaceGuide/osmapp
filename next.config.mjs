@@ -19,7 +19,7 @@ const rewrites = async () => {
         destination: '/feature/:coords',
       },
       {
-        source: '/:shortener([A-Za-z0-9]+[nwr])',
+        source: '/:shortener(\-[A-Za-z0-9]+[nwr])',
         destination: '/feature/:shortener',
       },
       {
