@@ -35,6 +35,14 @@ git rebase upstream/master
 
 That means our master branch does not reflect the full history. Old state can be restored using the release tags.
 
+## Husky git Hook Scripts
+
+To use local node 20 via nvm, to prepend the right path to your `.git/hooks/husky.local.sh`
+
+```
+export PATH="/home/--insert-your-user-name--/.config/nvm/versions/node/v20.19.5/bin:$PATH"
+```
+
 # OsmAPP – beta (Original Readme)
 
 Let's create a universal app for OpenStreetMap ecosystem.
