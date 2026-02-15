@@ -3,7 +3,11 @@ import Head from 'next/head';
 import { getUtfStrikethrough, join } from '../utils';
 import { Feature } from '../services/types';
 import { useFeatureContext } from '../components/utils/FeatureContext';
-import { getFullOsmappLink, getShortId } from '../services/helpers';
+import {
+  getFullOsmappLink,
+  getShortId,
+  getDetailPageLink,
+} from '../services/helpers';
 import { getLabel, getParentLabel } from './featureLabel';
 import {
   PROJECT_ID,
@@ -40,6 +44,7 @@ export const TitleAndMetaTags = () => {
 
   if (feature) {
     const url = getFullOsmappLink(feature);
+    const canonicalUrl = getDetailPageLink(feature);
     const titleLabel = getTitleLabel(feature);
     const title = `${titleLabel} | ${PROJECT_NAME}`;
     const description = feature.tags.description || t(PROJECT_SERP_DESCRIPTION);
@@ -74,6 +79,7 @@ export const TitleAndMetaTags = () => {
         <meta name="twitter:description" content={description} />
         <meta property="twitter:url" content={url} />
         {image && <meta name="twitter:image" content={image} />}
+        <link rel="canonical" href={canonicalUrl} />
       </Head>
     );
   }

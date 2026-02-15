@@ -32,6 +32,9 @@ export const getOsmappLink = (feature: Feature | null) => {
 export const getFullOsmappLink = (feature: Feature) =>
   `${PROJECT_URL}${getOsmappLink(feature)}`;
 
+export const getDetailPageLink = (feature: Feature) =>
+  `${PROJECT_URL}/detail${getOsmappLink(feature)}`;
+
 export const getShortLink = (feature: Feature) => {
   const slug = getShortenerSlug(feature.osmMeta);
   return slug === null ? null : `${PROJECT_URL}/-${slug}`;
