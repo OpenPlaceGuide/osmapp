@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Button } from '@mui/material';
 import { t } from '../../services/intl';
 import { fetchJson } from '../../services/fetch';
 import { useFeatureContext } from '../utils/FeatureContext';
-import { getUrlOsmId } from '../../services/helpers';
+import { getDetailPageLink } from '../../services/helpers';
 import { LonLat } from '../../services/types';
 
 const Spacer = styled.div`
@@ -30,18 +30,9 @@ const getData = async (center: LonLat, osmId: string) => {
 const OpenPlaceGuideLink = () => {
   const [instances, setInstances] = useState<Instance[]>([]);
   const { feature } = useFeatureContext();
-  const osmId = getUrlOsmId(feature.osmMeta);
-
-  useEffect(() => {
-    getData(feature.center, osmId).then((data) => setInstances(data ?? []));
-  }, [feature.center, osmId]);
-
-  if (instances.length === 0) {
-    return null;
-  }
 
   const selfInstance = {
-    url: `${window.location.origin}/detail/${osmId}`,
+    url: getDetailPageLink(feature),
     name: 'map.et',
   };
 
@@ -50,22 +41,7 @@ const OpenPlaceGuideLink = () => {
       <Button variant="contained" href={selfInstance.url}>
         {t('featurepanel.detail_page')}
       </Button>
-
       <Spacer />
-      {instances.map((instance) =>
-        instance.name === selfInstance.name ? (
-          ''
-        ) : (
-          <>
-            <a href={instance.url}>
-              {t('featurepanel.more_in_openplaceguide', {
-                instanceName: instance.name,
-              })}
-            </a>
-            <Spacer />
-          </>
-        ),
-      )}
     </>
   );
 };
