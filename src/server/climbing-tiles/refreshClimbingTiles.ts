@@ -24,7 +24,7 @@ const fetchFromOverpass = async () => {
   // takes about 42 secs, 25MB; in May25 = 25MB - 217k items->55k records
   const query = `[out:json][timeout:100];(nwr["climbing"];nwr["sport"="climbing"];);(._;>>;);out qt;`;
   const data = await fetchJson<OsmResponse>(
-    'https://overpass-api.de/api/interpreter',
+    'https://ethiopia.overpass.openplaceguide.org/api/interpreter',
     {
       body: encodeUrl`data=${query}`,
       method: 'POST',

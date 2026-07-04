@@ -31,7 +31,7 @@ const getWayOrRelationQuery = ({ id, type }: OsmId) =>
 export async function loadRunways(apiId: OsmId) {
   const isNode = apiId.type === 'node';
   const query = isNode ? getNodeQuery(apiId) : getWayOrRelationQuery(apiId);
-  const url = encodeUrl`https://overpass-api.de/api/interpreter?data=${query}`;
+  const url = encodeUrl`https://ethiopia.overpass.openplaceguide.org/api/interpreter?data=${query}`;
   const response: string = await fetchText(url);
 
   return response

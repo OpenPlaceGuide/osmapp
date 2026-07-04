@@ -12,7 +12,7 @@ const getOverpassQuery = ([a, b, c, d], query: string) =>
   `[out:json][timeout:25][bbox:${[d, a, b, c]}];(${query};);out geom qt;`;
 
 export const getOverpassUrl = (fullQuery: string) =>
-  `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
+  `https://ethiopia.overpass.openplaceguide.org/api/interpreter?data=${encodeURIComponent(
     fullQuery,
   )}`;
 

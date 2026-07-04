@@ -199,7 +199,7 @@ export const fetchCrags = async () => {
     out center qt;
   `;
   const data = encodeURIComponent(query);
-  const url = `https://overpass-api.de/api/interpreter?data=${data}`;
+  const url = `https://ethiopia.overpass.openplaceguide.org/api/interpreter?data=${data}`;
   const overpass = await fetchJson(url);
   const features = cragsToGeojson(overpass);
 
