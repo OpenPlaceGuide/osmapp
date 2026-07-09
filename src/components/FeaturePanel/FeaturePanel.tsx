@@ -70,6 +70,8 @@ export const FeaturePanel = ({ headingRef }: FeaturePanelProps) => {
           {!isMobileMode && <ParentLink />}
 
           <FeatureHeading ref={headingRef} />
+          <FeatureOpenPlaceGuideLink />
+
           <Stack spacing={1} alignItems="flex-start" sx={{ marginBottom: 1 }}>
             <ClimbingRouteGrade />
             <PanelClimbingBadges />
@@ -93,8 +95,6 @@ export const FeaturePanel = ({ headingRef }: FeaturePanelProps) => {
               </Box>
 
               <PanelSidePadding>
-                <FeatureOpenPlaceGuideLink />
-
                 {!movePropertiesBelowMembers && <PropertiesComponent />}
               </PanelSidePadding>
               <RouteDistributionInFeaturePanel />
