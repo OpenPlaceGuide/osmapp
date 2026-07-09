@@ -13,12 +13,17 @@ import { HamburgerMenu } from '../Map/HamburgerMenu/HamburgerMenu';
 import { setLastFeature } from '../../services/lastFeatureStorage';
 import { DirectionsButton } from '../Directions/DirectionsButton';
 import { usePanelShown } from '../utils/usePanelShown';
+import { OpenPlaceGuideHeader } from './OpenPlaceGuideHeader';
 
 const TopPanel = styled.div`
   position: absolute;
   height: ${SEARCH_BOX_HEIGHT}px;
   padding: 8px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: ${({ theme }) => theme.palette.background.paper};
 
   top: 0;
   z-index: 1200; // 1100 is PanelWrapper
@@ -83,6 +88,7 @@ const SearchBoxInner = ({ withoutPanel }) => {
 
   return (
     <TopPanel>
+      <OpenPlaceGuideHeader />
       <StyledPaper
         $withShadow={isMobileMode || withoutPanel}
         elevation={1}

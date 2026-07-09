@@ -114,7 +114,7 @@ const globalStyle = (theme: Theme) => css`
   }
 
   .maplibregl-ctrl-top-right {
-    top: 60px !important;
+    top: 110px !important;
 
     @media ${isTabletResolution} {
       top: 0px !important;
