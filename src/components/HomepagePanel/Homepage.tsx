@@ -43,7 +43,9 @@ const Spacer = styled.div`
 const Examples = () => (
   <>
     {t('homepage.examples.eg')}{' '}
-    <Link href="/way/151431279" locale={intl.lang}>Meskel Square</Link>
+    <Link href="/way/151431279" locale={intl.lang}>
+      Meskel Square
+    </Link>
   </>
 );
 
