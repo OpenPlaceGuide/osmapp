@@ -2837,6 +2837,45 @@ export const basicStyle = addHoverPaint({
     },
     ...poiLayers,
     ...overpassLayers,
+    {
+      id: 'building-name',
+      type: 'symbol',
+      source: 'maptiler_planet',
+      'source-layer': 'building',
+      minzoom: 14,
+      filter: ['all', ['==', '$type', 'Polygon'], ['has', 'name']],
+      layout: {
+        'text-font': ['Klokantech Noto Sans Regular'],
+        'text-justify': 'center',
+        'text-field': '{name}',
+        'text-size': {
+          stops: [
+            [14, 7],
+            [18, 11],
+          ],
+        },
+        'text-max-width': 4,
+        'text-allow-overlap': {
+          base: 1,
+          stops: [
+            [17, false],
+            [20, true],
+          ],
+        },
+        'text-ignore-placement': {
+          base: 1,
+          stops: [
+            [17, false],
+            [20, true],
+          ],
+        },
+      },
+      paint: {
+        'text-color': '#333',
+        'text-halo-color': 'rgba(255,255,255,0.8)',
+        'text-halo-width': 1,
+      },
+    },
   ],
   id: 'ciw6czz2n00242kmg6hw20box',
 });
