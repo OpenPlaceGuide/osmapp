@@ -38,6 +38,13 @@ const africaBbox: Bbox = [
   40, // north
 ];
 
+const ethiopiaBbox: Bbox = [
+  32.99, // west
+  3.4, // south
+  48.0, // east
+  14.9, // north
+];
+
 const czBbox: Bbox = [
   12.09, // west
   48.55, // south
@@ -46,6 +53,16 @@ const czBbox: Bbox = [
 ];
 
 export const osmappLayers: Layers = {
+  basicEthiopia: {
+    name: `${t('layers.makina_africa')} Ethiopia`,
+    type: 'basemap',
+    Icon: ExploreIcon,
+    attribution: [
+      '<a href="https://openplaceguide.org/">OPG</a> © <a href="https://openmaptiles.org/">OpenMapTiles</a>',
+      'osm',
+    ],
+    bboxes: [ethiopiaBbox],
+  },
   basic: {
     name: t('layers.makina_africa'),
     type: 'basemap',

@@ -16,6 +16,7 @@ import Cookies from 'js-cookie';
 import Router from 'next/router';
 import { getMapViewFromHash } from '../App/helpers';
 import { osmappLayers } from '../LayerSwitcher/osmappLayers';
+import { isViewInsideBbox } from '../LayerSwitcher/helpers';
 import { fakeStaticExportSkipDefaultMapView } from '../App/fakeStaticExportHelpers';
 
 export type LayerIcon = React.ComponentType<{ fontSize: 'small' }>;
@@ -94,6 +95,46 @@ const useActiveLayersState = () => {
   return usePersistedState('activeLayers', initLayers);
 };
 
+const BBOX_LAYERS = Object.entries(osmappLayers)
+  .filter(([, layer]) => layer.type === 'basemap' && layer.bboxes?.length)
+  .map(([key]) => key);
+
+const useAutoSelectByBbox = (
+  view: View,
+  activeLayers: string[],
+  setActiveLayers: Setter<string[]>,
+) => {
+  useEffect(() => {
+    const basemap = activeLayers[0];
+    if (!BBOX_LAYERS.includes(basemap)) {
+      return;
+    }
+
+    const matchingLayer = BBOX_LAYERS.find((key) =>
+      osmappLayers[key].bboxes.some((bbox) => isViewInsideBbox(view, bbox)),
+    );
+    if (matchingLayer && matchingLayer !== basemap) {
+      setActiveLayers((prev) => [matchingLayer, ...prev.slice(1)]);
+    }
+  }, [view, activeLayers, setActiveLayers]);
+};
+
+const useAllActiveLayers = (activeLayers: string[], userLayers: Layer[]) => {
+  const [allActiveLayers, setAllActiveLayers] = useState<Layer[]>([]);
+
+  useEffect(() => {
+    const activeOsmappLayers = activeLayers
+      .map((key) => osmappLayers[key])
+      .filter((x) => x);
+    const activeUserLayers = userLayers.filter(({ url }) =>
+      activeLayers.includes(url),
+    );
+    setAllActiveLayers([...activeUserLayers, ...activeOsmappLayers]);
+  }, [activeLayers, userLayers]);
+
+  return allActiveLayers;
+};
+
 export const MapStateProvider: React.FC<{ initialMapView: View }> = ({
   children,
   initialMapView,
@@ -106,20 +147,12 @@ export const MapStateProvider: React.FC<{ initialMapView: View }> = ({
     'userLayerIndex',
     [],
   );
-  const [allActiveLayers, setAllActiveLayers] = useState<Layer[]>([]);
+  const allActiveLayers = useAllActiveLayers(activeLayers, userLayers);
   const mapClickOverrideRef = useRef<MapClickOverride>();
   const [mapLoaded, setMapLoaded, setNotLoaded] = useBoolState(true);
   useEffect(setNotLoaded, [setNotLoaded]);
 
-  useEffect(() => {
-    const activeOsmappLayers = activeLayers
-      .map((key) => osmappLayers[key])
-      .filter((x) => x);
-    const activeUserLayers = userLayers.filter(({ url }) =>
-      activeLayers.includes(url),
-    );
-    setAllActiveLayers([...activeUserLayers, ...activeOsmappLayers]);
-  }, [activeLayers, userLayers]);
+  useAutoSelectByBbox(view, activeLayers, setActiveLayers);
 
   const setBothViews: Setter<View> = useCallback((newView) => {
     setView(newView);
@@ -129,9 +162,9 @@ export const MapStateProvider: React.FC<{ initialMapView: View }> = ({
   const mapState: MapStateContextType = {
     bbox,
     setBbox,
-    view, // always up-to-date (for use in react)
+    view,
     setView: setBothViews,
-    viewForMap, // updated only when map has to be updated
+    viewForMap,
     setViewFromMap: setView,
     activeLayers,
     setActiveLayers,

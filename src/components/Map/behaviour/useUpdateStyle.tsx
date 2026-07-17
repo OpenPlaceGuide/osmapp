@@ -10,6 +10,7 @@ import { osmappLayers } from '../../LayerSwitcher/osmappLayers';
 import { getRasterStyle } from '../styles/rasterStyle';
 import { DEFAULT_MAP } from '../../../config.mjs';
 import { makinaAfricaStyle } from '../styles/makinaAfricaStyle';
+import { makinaEthiopiaStyle } from '../styles/makinaEthiopiaStyle';
 import {
   CLIMBING_SPRITE,
   climbingLayers,
@@ -43,6 +44,9 @@ const ofrBasicStyle = {
 const getBaseStyle = (key: string, currentTheme: Theme): StyleSpecification => {
   if (key === 'basic') {
     return makinaAfricaStyle;
+  }
+  if (key === 'basicEthiopia') {
+    return makinaEthiopiaStyle;
   }
   if (key === 'basicOfr') {
     return ofrBasicStyle;
