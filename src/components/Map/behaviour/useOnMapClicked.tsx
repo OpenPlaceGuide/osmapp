@@ -41,6 +41,28 @@ const getId = (feature) => {
   return { isOsmObject, osmMeta };
 };
 
+const CLICK_RADIUS = 20;
+
+const findFeatureByLayer = (features: MapGeoJSONFeature[], layerId: string) => {
+  return features.find((f) => f.layer.id === layerId);
+};
+
+const getClickedFeature = (
+  map: maplibregl.Map,
+  point: maplibregl.PointLike,
+) => {
+  const allFeatures = map.queryRenderedFeatures(point, {
+    radius: CLICK_RADIUS,
+  });
+
+  const buildingName = findFeatureByLayer(allFeatures, 'building-name');
+  if (buildingName) {
+    return buildingName;
+  }
+
+  return allFeatures[0];
+};
+
 const getOnlyLabel = (
   features: MapGeoJSONFeature[],
   coords: LonLat,
@@ -107,7 +129,8 @@ export const useOnMapClicked = createMapEventHook<
   eventType: 'click',
   eventHandler: async ({ point }) => {
     const coords = map.unproject(point).toArray();
-    const features = map.queryRenderedFeatures(point);
+    const feature = getClickedFeature(map, point);
+    const features = feature ? [feature] : [];
 
     if (mapClickOverrideRef.current) {
       const label = getOnlyLabel(features, coords, map);
@@ -115,13 +138,13 @@ export const useOnMapClicked = createMapEventHook<
       return;
     }
 
-    if (!features.length) {
+    if (!feature) {
       coordsClicked(map, coords, setFeature);
       return;
     }
 
-    const skeleton = getSkeleton(features[0], coords);
-    console.log(`clicked map feature (id=${features[0].id}): `, features[0]); // eslint-disable-line no-console
+    const skeleton = getSkeleton(feature, coords);
+    console.log(`clicked map feature (id=${feature.id}): `, feature); // eslint-disable-line no-console
     publishDbgObject('last skeleton', skeleton);
 
     if (skeleton.nonOsmObject) {

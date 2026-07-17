@@ -2840,6 +2840,9 @@ export const basicStyle = addHoverPaint({
     {
       id: 'building-name',
       type: 'symbol',
+      metadata: {
+        clickableWithOsmId: true,
+      },
       source: 'maptiler_planet',
       'source-layer': 'building',
       minzoom: 14,

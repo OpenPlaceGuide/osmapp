@@ -14,7 +14,11 @@ const isMaptilerCorruptedId = (feature: Feature, skeleton: Feature) => {
     return true;
   }
 
-  if (feature.tags.name !== skeleton.tags.name) {
+  if (feature.error) {
+    return true;
+  }
+
+  if (feature.tags?.name !== skeleton.tags?.name) {
     return true;
   }
 

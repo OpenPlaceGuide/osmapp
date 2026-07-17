@@ -13,10 +13,11 @@ const ICON_OPACITY = ['case', ['boolean', ['feature-state', 'hideIcon'], false],
 
 export const addHoverPaint = (origStyle): StyleSpecification => {
   origStyle.layers
-    .filter((layer) => layer.id.match(/^poi-/))
+    .filter((layer) => layer.id.match(/^poi-/) || layer.id === 'building-name')
     .forEach((layer) => {
       if (layer.paint) {
         layer.paint['icon-opacity'] = ICON_OPACITY; // eslint-disable-line no-param-reassign
+        layer.paint['text-opacity'] = HOVER_EXPRESSION; // eslint-disable-line no-param-reassign
       }
     });
 
